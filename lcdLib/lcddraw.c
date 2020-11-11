@@ -21,6 +21,7 @@ void drawLink(u_char offc, u_char offr, u_int bgColorBGR) {
   u_char col = 0;
   u_char row = 0;
   while (row < 17) {
+    col = 0;
     while (col < 17) {
       if (link[row][col] == 0)
 	drawPixel(col + offc, row+offr, bgColorBGR);
