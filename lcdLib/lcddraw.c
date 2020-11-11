@@ -35,7 +35,55 @@ void drawLink(u_char offc, u_char offr, u_int bgColorBGR) {
     }
     row++;
   }   
-}  
+}
+
+void drawSonic(u_char offc, u_char offr, u_int bgColorBGR) {
+  u_char col = 0;
+  u_char row = 0;
+  while (row < 33) {
+    col = 0;
+    while (col < 33) {
+      if (sonic[row][col] == 0)
+	drawPixel(col + offc, row+offr, bgColorBGR);
+      else if (sonic[row][col] == 1)
+	drawPixel(col + offc, row+offr, COLOR_BLACK);
+      else if (sonic[row][col] == 2)
+	drawPixel(col + offc, row+offr, COLOR_BLUE);
+      else if (sonic[row][col] == 3)
+	drawPixel(col + offc, row+offr, COLOR_TAN);
+      else if (sonic[row][col] == 4)
+	drawPixel(col + offc, row+offr, COLOR_WHITE);
+      else if (sonic[row][col] == 5)
+	drawPixel(col + offc, row+offr, COLOR_RED);
+      col++;
+    }
+    row++;
+  }   
+}
+
+void drawSonic2(u_char offc, u_char offr, u_int bgColorBGR) {
+  u_char col = 0;
+  u_char row = 0;
+  while (row < 33) {
+    col = 0;
+    while (col < 33) {
+      if (sonic2[row][col] == 0)
+	drawPixel(col + offc, row+offr, bgColorBGR);
+      else if (sonic2[row][col] == 1)
+	drawPixel(col + offc, row+offr, COLOR_BLACK);
+      else if (sonic2[row][col] == 2)
+	drawPixel(col + offc, row+offr, COLOR_BLUE);
+      else if (sonic2[row][col] == 3)
+	drawPixel(col + offc, row+offr, COLOR_TAN);
+      else if (sonic2[row][col] == 4)
+	drawPixel(col + offc, row+offr, COLOR_WHITE);
+      else if (sonic2[row][col] == 5)
+	drawPixel(col + offc, row+offr, COLOR_RED);
+      col++;
+    }
+    row++;
+  }   
+}
 /** Fill rectangle
  *
  *  \param colMin Column start

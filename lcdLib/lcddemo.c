@@ -16,8 +16,10 @@ main()
 
   clearScreen(COLOR_WHITE);
 
-  drawString5x7(20,20, "hello", COLOR_GREEN, COLOR_RED);
-  drawLink(40,40,COLOR_WHITE);
+  drawString5x7(20,20, "go fast", COLOR_RED, COLOR_WHITE);
+  //drawLink(40,40,COLOR_WHITE);
+  drawSonic(80,80, COLOR_WHITE);
+  drawSonic2(20,50, COLOR_WHITE);
   //fillRectangle(30,30, 60, 60, COLOR_ORANGE);
   
 }
