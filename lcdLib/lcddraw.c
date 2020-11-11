@@ -17,6 +17,24 @@ void drawPixel(u_char col, u_char row, u_int colorBGR)
   lcd_writeColor(colorBGR);
 }
 
+void drawLink(u_char offc, u_char offr, u_int bgColorBGR) {
+  u_char col = 0;
+  u_char row = 0;
+  while (row < 17) {
+    while (col < 17) {
+      if (link[row][col] == 0)
+	drawPixel(col + offc, row+offr, bgColorBGR);
+      else if (link[row][col] == 1)
+	drawPixel(col + offc, row+offr, COLOR_GREEN);
+      else if (link[row][col] == 2)
+	drawPixel(col + offc, row+offr, COLOR_BROWN);
+      else if (link[row][col] == 3)
+	drawPixel(col + offc, row+offr, COLOR_TAN);
+      col++;
+    }
+    row++;
+  }   
+}  
 /** Fill rectangle
  *
  *  \param colMin Column start
