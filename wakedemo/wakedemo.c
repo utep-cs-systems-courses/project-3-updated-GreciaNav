@@ -34,9 +34,24 @@ void main()
   
   clearScreen(COLOR_BLUE);
   while (1) {			/* forever */
+    static char color = 0;
     if (redrawScreen) {
       redrawScreen = 0;
-      drawString5x7(20,20, "hello", fontFgColor, COLOR_BLUE);
+      switch (color) {
+      case 0:
+	fillRectangle(20,20,10,10, COLOR_WHITE);
+	color++;
+	break;
+      case 1:
+	fillRectangle(20,20,10,10, COLOR_RED);
+	color++;
+	break;
+      case 2:
+	fillRectangle(20,20,10,10, COLOR_GREEN);
+	color = 0;
+	break;
+      }
+      //drawString5x7(20,20, "hello", fontFgColor, COLOR_BLUE);
     }
     P1OUT &= ~LED_GREEN;	/* green off */
     or_sr(0x10);		/**< CPU OFF */
