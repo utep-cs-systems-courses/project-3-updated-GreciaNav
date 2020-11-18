@@ -20,9 +20,9 @@ void drawPixel(u_char col, u_char row, u_int colorBGR)
 void drawLink(u_char offc, u_char offr, u_int bgColorBGR) {
   u_char col = 0;
   u_char row = 0;
-  while (row < 17) {
+  while (row < 16) {
     col = 0;
-    while (col < 17) {
+    while (col < 16) {
       if (link[row][col] == 0)
 	drawPixel(col + offc, row+offr, bgColorBGR);
       else if (link[row][col] == 1)
@@ -40,9 +40,9 @@ void drawLink(u_char offc, u_char offr, u_int bgColorBGR) {
 void drawSonic(u_char offc, u_char offr, u_int bgColorBGR) {
   u_char col = 0;
   u_char row = 0;
-  while (row < 33) {
+  while (row < 32) {
     col = 0;
-    while (col < 33) {
+    while (col < 32) {
       if (sonic[row][col] == 0)
 	drawPixel(col + offc, row+offr, bgColorBGR);
       else if (sonic[row][col] == 1)
@@ -64,9 +64,9 @@ void drawSonic(u_char offc, u_char offr, u_int bgColorBGR) {
 void drawSonic2(u_char offc, u_char offr, u_int bgColorBGR) {
   u_char col = 0;
   u_char row = 0;
-  while (row < 33) {
+  while (row < 32) {
     col = 0;
-    while (col < 33) {
+    while (col < 32) {
       if (sonic2[row][col] == 0)
 	drawPixel(col + offc, row+offr, bgColorBGR);
       else if (sonic2[row][col] == 1)

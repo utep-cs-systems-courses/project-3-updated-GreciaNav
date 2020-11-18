@@ -32,14 +32,14 @@ void main()
   enableWDTInterrupts();      /**< enable periodic interrupt */
   or_sr(0x8);	              /**< GIE (enable interrupts) */
   
-  clearScreen(COLOR_BLUE);
+  clearScreen(COLOR_WHITE);
   while (1) {			/* forever */
     static char color = 0;
     if (redrawScreen) {
       redrawScreen = 0;
       switch (color) {
       case 0:
-	fillRectangle(20,20,10,10, COLOR_WHITE);
+	drawSonic(50,50,COLOR_WHITE);
 	color++;
 	break;
       case 1:
