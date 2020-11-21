@@ -13,7 +13,7 @@ u_int fontFgColor = COLOR_GREEN;
 void wdt_c_handler()
 {
   static char blink_buz_count = 0;
-  /*
+  
   if (++blink_buz_count == 62 && button_state == 0) { //Called per 1/4th of a sec, plays song
     buzz_song_advance();
     blink_buz_count = 0;
@@ -32,7 +32,7 @@ void wdt_c_handler()
     buzzer_set_period(0);
     dim();
     blink_buz_count = 0;
-    }*/
+  }
 }
   
 
@@ -42,8 +42,8 @@ void main()
   P1OUT |= LED_GREEN;
   configureClocks();
   lcd_init();
-  //led_init();
-  //buzzer_init();
+  led_init();
+  buzzer_init();
   p2sw_init(SWITCHES);
   
   enableWDTInterrupts();      /**< enable periodic interrupt */
