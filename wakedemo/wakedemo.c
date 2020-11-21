@@ -43,11 +43,7 @@ void main()
 	color++;
 	break;
       case 1:
-	fillRectangle(20,20,10,10, COLOR_RED);
-	color++;
-	break;
-      case 2:
-	fillRectangle(20,20,10,10, COLOR_GREEN);
+	drawSonic2(50,50, COLOR_WHITE);
 	color = 0;
 	break;
       }

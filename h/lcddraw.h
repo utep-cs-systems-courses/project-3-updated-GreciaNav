@@ -5,6 +5,9 @@
 #ifndef lcddraw_included
 #define lcddraw_included
 
+void drawLink(u_char offc, u_char offr, u_int bgColorBGR);
+void drawSonic(u_char offc, u_char offr, u_int bgColorBGR);
+void drawSonic2(u_char offc, u_char offr, u_int bgColorBGR);
 /** Draw single pixel at col, row 
  *
  *  \param col Column to draw to
