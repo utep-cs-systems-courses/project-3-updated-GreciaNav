@@ -7,7 +7,7 @@
 	.text
 	
 
-	.extern redrawScreen
+	.extern changeMade
 	.extern wdt_c_handler
 WDT:
 ; start of function
@@ -47,7 +47,7 @@ WDT:
 	POP	R13
 	POP	R14
 	POP	R15
-	cmp	#0, &redrawScreen
+	cmp	#0, &changeMade
 	jz	dont_wake
 	and	#0xffef, 0(r1)	; clear CPU off in saved SR
 dont_wake:	

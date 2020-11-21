@@ -3,6 +3,8 @@
 #include "led.h"
 #include "buzzer.h"
 #include "notes.h"
+#include "lcdutils.h"
+#include "lcddraw.h"
 
 static char sb = 1; //Determines if we are on up or down state
 static char toggle_state = 0; //Determines current toggle state for dimming
@@ -142,6 +144,12 @@ void buzz_song_advance() //Plays Sonic song
 {
   static char curr_note = 0;
 
+  //Alternating Sonic sprites
+  if ((curr_note % 2) == 0)
+    drawSonic(50,50,COLOR_WHITE);
+  else
+    drawSonic2(50,50,COLOR_WHITE);
+
   switch(curr_note) {
   case 0: //Plays note G
     buzzer_set_period(G);
@@ -153,97 +161,65 @@ void buzz_song_advance() //Plays Sonic song
     break;
   case 3: //Break in notes
     buzzer_set_period(0);
-    green_on = 1; //Light on during a break
-    led_update();
     curr_note++;
     break;
   case 4: //Plays note E
     buzzer_set_period(E);
-    green_on = 0;
-    led_update();
     curr_note++;
     break;
   case 5: //Break in notes
     buzzer_set_period(0);
-    red_on = 1; //Light on during a break
-    led_update();
     curr_note++;
     break;
   case 6: //Plays note F, hold 2 beats
     buzzer_set_period(F);
-    red_on = 0; 
-    led_update();
     curr_note++;
     break;
   case 8: //Break in notes
     buzzer_set_period(0);
-    green_on = 1; //Light on during a break
-    led_update();
     curr_note++;
     break;
   case 9: //Plays note D, hold 2 beats
     buzzer_set_period(D);
-    green_on = 0;
-    led_update();
     curr_note++;
     break;
   case 11: //Break in notes
     buzzer_set_period(0);
-    red_on = 1; //Light on during a break
-    led_update();
     curr_note++;
     break;
   case 12: //Plays note E
     buzzer_set_period(E);
-    red_on = 0; //Light on during a break
-    led_update();
     curr_note++;
     break;
   case 13: //Break in notes
     buzzer_set_period(0);
-    green_on = 1; //Light on during a break
-    led_update();
     curr_note++;
     break;
   case 14: //Plays note E
     buzzer_set_period(E);
-    green_on = 0; //Light on during a break
-    led_update();
     curr_note++;
     break;
   case 15: //Break in notes
     buzzer_set_period(0);
-    red_on = 1; //Light on during a break
-    led_update();
     curr_note++;
     break;
   case 16: //Plays note E
     buzzer_set_period(E);
-    red_on = 0; //Light on during a break
-    led_update();
     curr_note++;
     break;
   case 17: //Break in notes
     buzzer_set_period(0);
-    green_on = 1; //Light on during a break
-    led_update();
     curr_note++;
   case 18: //Plays note C, hold 2 beats
     buzzer_set_period(Cn);
-    green_on = 0; //Light on during a break
-    led_update();
     curr_note++;
     break;
   case 20: //Break in notes
     buzzer_set_period(0);
-    red_on = 1; //Light on during a break
-    led_update();
     curr_note++;
     break;
   case 21: //Plays note A#, hold 2 beats
     buzzer_set_period(ASH);
-    red_on = 0; //Light on during a break
-    led_update();
     curr_note++;
     break;
   case 23: //Plays note D, hold 2 beats
