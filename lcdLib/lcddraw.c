@@ -62,7 +62,7 @@ void drawZeldaScene()
   drawLink(50,107, COLOR_BLACK);
 }
 
-void drawSonic(u_char offc, u_char offr, u_int bgColorBGR) {
+void drawSonic(u_char offc, u_char offr, u_int bgColorBGR, u_int sonicColor) {
   u_char col = 0;
   u_char row = 0;
   while (row < 32) {
@@ -73,7 +73,7 @@ void drawSonic(u_char offc, u_char offr, u_int bgColorBGR) {
       else if (sonic[row][col] == 1)
 	drawPixel(col + offc, row+offr, COLOR_BLACK);
       else if (sonic[row][col] == 2)
-	drawPixel(col + offc, row+offr, COLOR_BLUE);
+	drawPixel(col + offc, row+offr, sonicColor);
       else if (sonic[row][col] == 3)
 	drawPixel(col + offc, row+offr, COLOR_TAN);
       else if (sonic[row][col] == 4)
@@ -86,7 +86,7 @@ void drawSonic(u_char offc, u_char offr, u_int bgColorBGR) {
   }   
 }
 
-void drawSonic2(u_char offc, u_char offr, u_int bgColorBGR) {
+void drawSonic2(u_char offc, u_char offr, u_int bgColorBGR, u_int sonicColor) {
   u_char col = 0;
   u_char row = 0;
   while (row < 32) {
@@ -97,7 +97,7 @@ void drawSonic2(u_char offc, u_char offr, u_int bgColorBGR) {
       else if (sonic2[row][col] == 1)
 	drawPixel(col + offc, row+offr, COLOR_BLACK);
       else if (sonic2[row][col] == 2)
-	drawPixel(col + offc, row+offr, COLOR_BLUE);
+	drawPixel(col + offc, row+offr, sonicColor);
       else if (sonic2[row][col] == 3)
 	drawPixel(col + offc, row+offr, COLOR_TAN);
       else if (sonic2[row][col] == 4)

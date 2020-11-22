@@ -6,8 +6,8 @@
 #define lcddraw_included
 
 void drawLink(u_char offc, u_char offr, u_int bgColorBGR);
-void drawSonic(u_char offc, u_char offr, u_int bgColorBGR);
-void drawSonic2(u_char offc, u_char offr, u_int bgColorBGR);
+void drawSonic(u_char offc, u_char offr, u_int bgColorBGR, u_int sonicColor);
+void drawSonic2(u_char offc, u_char offr, u_int bgColorBGR, u_int sonicColor);
 void drawZeldaScene();
 
 /** Draw single pixel at col, row 

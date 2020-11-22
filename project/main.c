@@ -16,7 +16,7 @@ void wdt_c_handler()
   changeMade = 1;
   
   if (++interrupt_count == 62 && button_state == 0) { //Called per 1/4th of a sec, plays song
-    buzz_song_advance();
+    buzz_song_advance(COLOR_BLUE);
     interrupt_count = 0;
   }
   else if (interrupt_count == 250 && button_state == 1) { //Siren buzz
@@ -24,12 +24,12 @@ void wdt_c_handler()
     clearScreen(COLOR_BLACK);
     drawZeldaScene();
   }    
-  else if (button_state == 2) { //Advances siren state, switches leds
-    turn_green_on();
+  else if (interrupt_count == 62 && button_state == 2) { //Advances siren state, switches leds
+    buzz_song_advance(COLOR_YELLOW);
+    interrupt_count = 0;
   }
-  else if ((interrupt_count == 3) && button_state == 3) { //Different red intensities, buzzer off
+  else if ((interrupt_count == 250) && button_state == 3) { //Different red intensities, buzzer off
     buzzer_set_period(0);
-    dim();
     interrupt_count = 0;
   }
 }

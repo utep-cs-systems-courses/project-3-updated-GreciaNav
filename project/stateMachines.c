@@ -5,6 +5,7 @@
 #include "notes.h"
 #include "lcdutils.h"
 #include "lcddraw.h"
+#include "p2switches.h"
 
 static char sb = 1; //Determines if we are on up or down state
 static char toggle_state = 0; //Determines current toggle state for dimming
@@ -143,13 +144,20 @@ void buzzer_advance() //Plays siren
 void buzz_song_advance() //Plays Sonic song
 {
   static char curr_note = 0;
-
+  
   //Alternating Sonic sprites
-  if ((curr_note % 2) == 0)
-    drawSonic(50,50,COLOR_WHITE);
-  else
-    drawSonic2(50,50,COLOR_WHITE);
-
+  if ((curr_note % 2) == 0) {
+    if (button_state == 0)
+      drawSonic(50,50,COLOR_WHITE, COLOR_BLUE);
+    if (button_state == 2)
+      drawSonic(50,50,COLOR_WHITE, COLOR_YELLOW);
+  }  
+  else {
+    if (button_state == 0)
+      drawSonic2(50,50,COLOR_WHITE, COLOR_BLUE);
+    else 
+      drawSonic2(50,50,COLOR_WHITE, COLOR_YELLOW);
+  }  
   switch(curr_note) {
   case 0: //Plays note G
     buzzer_set_period(G);

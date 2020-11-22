@@ -62,8 +62,10 @@ switch_interrupt_handler()
   }  
   else if ((p2val & SW2) == 0) //Button 2 was pressed 
     button_state = 1;   
-  else if ((p2val & SW3) == 0) //Button 3 was pressed
+  else if ((p2val & SW3) == 0) { //Button 3 was pressed
+    clearScreen(COLOR_WHITE);
     button_state = 2;
+  }
   else if ((p2val & SW4) == 0) //Button 4 was pressed
     button_state = 3;
 }
