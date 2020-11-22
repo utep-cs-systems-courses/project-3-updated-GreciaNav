@@ -40,10 +40,26 @@ void drawLink(u_char offc, u_char offr, u_int bgColorBGR)
 
 void drawZeldaScene()
 {
-  drawString11x16(5,10,"It's 2020.", COLOR_WHITE, COLOR_BLACK);
-  //drawString11x16(5,27,"met a terrible fate,", COLOR_WHITE, COLOR_BLACK);
-  //drawString11x16(5,43,"haven't you?", COLOR_WHITE, COLOR_BLACK);
-  drawLink(50,80, COLOR_BLACK);
+  static char colorState = 0;
+  u_int textColor; 
+  switch (colorState) {
+  case 0:
+    textColor = COLOR_WHITE;
+    colorState++;
+    break;
+  case 1:
+    textColor = COLOR_RED;
+    colorState = 0;
+    break;
+  }   
+  
+  drawString11x16(0,5,"It's 2020.", textColor, COLOR_BLACK);
+  drawString11x16(0,22,"You've met", textColor, COLOR_BLACK);
+  drawString11x16(0,39,"a terrible", textColor, COLOR_BLACK);
+  drawString11x16(0,56,"fate...", textColor, COLOR_BLACK);
+  drawString11x16(0,73,"Haven't", textColor, COLOR_BLACK);
+  drawString11x16(0,90,"you?", textColor, COLOR_BLACK);
+  drawLink(50,107, COLOR_BLACK);
 }
 
 void drawSonic(u_char offc, u_char offr, u_int bgColorBGR) {
@@ -156,7 +172,7 @@ void drawChar11x16(u_char rcol, u_char rrow, char c,
 {
   u_char col = 0;
   u_char row = 0;
-  u_char bit = 0x01;
+  u_int bit = 0x0001;
   u_char oc = c - 0x20;
 
   lcd_setArea(rcol, rrow, rcol + 10, rrow + 16); /* relative to requested col/row */
