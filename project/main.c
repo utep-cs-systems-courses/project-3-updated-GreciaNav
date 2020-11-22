@@ -8,7 +8,7 @@
 #include "buzzer.h"
 
 short changeMade = 1;
-u_int fontFgColor = COLOR_GREEN;
+u_int fontFgColor = COLOR_BLACK;
 
 void wdt_c_handler()
 {
@@ -19,14 +19,12 @@ void wdt_c_handler()
     buzz_song_advance();
     interrupt_count = 0;
   }
-  else if ((interrupt_count % 25) == 0 && button_state == 1) //Siren buzz
-     buzzer_advance();
-  else if ((interrupt_count == 62) && button_state == 1) { //Advances siren state, switches leds
-    siren_state_advance();
-    interrupt_count = 0;
-  }
-  else if (button_state == 2) { //Only green led on, buzzer off
+  else if (interrupt_count == 250 && button_state == 1) { //Siren buzz
     buzzer_set_period(0);
+    clearScreen(COLOR_BLACK);
+    drawZeldaScene();
+  }    
+  else if (button_state == 2) { //Advances siren state, switches leds
     turn_green_on();
   }
   else if ((interrupt_count == 3) && button_state == 3) { //Different red intensities, buzzer off
