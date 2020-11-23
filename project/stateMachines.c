@@ -10,6 +10,12 @@
 static char sb = 1; //Determines if we are on up or down state
 static char toggle_state = 0; //Determines current toggle state for dimming
 
+void turn_red_off() //Turns red off
+{
+  red_on = 0;
+  led_update();
+}
+
 void toggle_red() //Red at 50% intensity		
 {
   switch (toggle_state) {

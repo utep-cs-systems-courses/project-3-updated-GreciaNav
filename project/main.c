@@ -15,23 +15,27 @@ void wdt_c_handler()
   static char interrupt_count = 0;
   
   if (++interrupt_count == 62 && button_state == 0) { //Called per 1/4th of a sec, plays song
+    turn_red_off();
     buzz_song_advance();
     interrupt_count = 0;
     changeMade = 1;
   }
   else if (interrupt_count == 250 && button_state == 1) { //Siren buzz
+    turn_red_off();
     buzzer_set_period(0);
     clearScreen(COLOR_BLACK);
     drawZeldaScene();
     changeMade = 1;
   }    
   else if (interrupt_count == 62 && button_state == 2) { //Advances siren state, switches leds
+    turn_red_off();
     buzz_song_advance();
     interrupt_count = 0;
     changeMade = 1;
   }
-  else if ((interrupt_count == 62) && button_state == 3) { //Different red intensities, buzzer off
-    buzz_song_advance();
+  else if ((interrupt_count == 3) && button_state == 3) { //Different red intensities, buzzer off
+    buzzer_set_period(0);
+    dim();
     interrupt_count = 0;
     changeMade = 1;
   }
