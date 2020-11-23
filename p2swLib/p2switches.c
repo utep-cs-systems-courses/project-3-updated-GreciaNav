@@ -66,6 +66,8 @@ switch_interrupt_handler()
     clearScreen(COLOR_WHITE);
     button_state = 2;
   }
-  else if ((p2val & SW4) == 0) //Button 4 was pressed
+  else if ((p2val & SW4) == 0) {//Button 4 was pressed
+    clearScreen(COLOR_WHITE);
     button_state = 3;
+  }  
 }

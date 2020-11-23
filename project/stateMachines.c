@@ -151,12 +151,16 @@ void buzz_song_advance() //Plays Sonic song
       drawSonic(50,50,COLOR_WHITE, COLOR_BLUE);
     if (button_state == 2)
       drawSonic(50,50,COLOR_WHITE, COLOR_YELLOW);
+    if (button_state == 3)
+      drawSonic(50,50,COLOR_WHITE, COLOR_CYAN);
   }  
   else {
     if (button_state == 0)
       drawSonic2(50,50,COLOR_WHITE, COLOR_BLUE);
-    else 
+    if (button_state == 2)
       drawSonic2(50,50,COLOR_WHITE, COLOR_YELLOW);
+    if (button_state == 3)
+      drawSonic2(50,50,COLOR_WHITE, COLOR_CYAN);
   }  
   switch(curr_note) {
   case 0: //Plays note G

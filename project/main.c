@@ -13,24 +13,27 @@ u_int fontFgColor = COLOR_BLACK;
 void wdt_c_handler()
 {
   static char interrupt_count = 0;
-  changeMade = 1;
   
   if (++interrupt_count == 62 && button_state == 0) { //Called per 1/4th of a sec, plays song
-    buzz_song_advance(COLOR_BLUE);
+    buzz_song_advance();
     interrupt_count = 0;
+    changeMade = 1;
   }
   else if (interrupt_count == 250 && button_state == 1) { //Siren buzz
     buzzer_set_period(0);
     clearScreen(COLOR_BLACK);
     drawZeldaScene();
+    changeMade = 1;
   }    
   else if (interrupt_count == 62 && button_state == 2) { //Advances siren state, switches leds
-    buzz_song_advance(COLOR_YELLOW);
+    buzz_song_advance();
     interrupt_count = 0;
+    changeMade = 1;
   }
-  else if ((interrupt_count == 250) && button_state == 3) { //Different red intensities, buzzer off
-    buzzer_set_period(0);
+  else if ((interrupt_count == 62) && button_state == 3) { //Different red intensities, buzzer off
+    buzz_song_advance();
     interrupt_count = 0;
+    changeMade = 1;
   }
 }
   
