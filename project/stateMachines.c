@@ -43,6 +43,7 @@ void toggle_red() //Red at 50% intensity
 void toggle_red75() //Red at 75% intensity
 {
   if (repeated < 3) {
+    repeated++;
     switch (toggle_state) {
     case 0: //Red on
       red_on = 1;
@@ -68,6 +69,7 @@ void toggle_red75() //Red at 75% intensity
 void toggle_red25() //Red at 25% intensity
 {
   if (repeated < 3) {
+    repeated++;
     switch (toggle_state) {
     case 0: //Red off
       red_on = 0;
