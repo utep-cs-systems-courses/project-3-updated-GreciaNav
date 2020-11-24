@@ -7,10 +7,10 @@
 #include "lcddraw.h"
 #include "p2switches.h"
 
-static char sb = 1; //Determines if we are on up or down state
-static char toggle_state = 0; //Determines current toggle state for dimming
-static char dim_state = 0; //Determines state of dim()
-static char repeated = 0; //Used to control how many times funcitons are called in dim
+char sb = 1; //Determines if we are on up or down state
+char toggle_state = 0; //Determines current toggle state for dimming
+char dim_state = 0; //Determines state of dim()
+char repeated = 0; //Used to control how many times funcitons are called in dim
 
 void draw_diamonds()
 {
@@ -109,21 +109,23 @@ void toggle_red25() //Red at 25% intensity
     dim_state = 0;
   }  
 }
-  
-void dim()
-{
-  switch (dim_state) {
-  case 0: //Dim intensity 50
-    toggle_red();
-    break;
-  case 1: //Dim intensity 75
-    toggle_red75();
-    break;
-  case 2: //Dim intensity 25
-    toggle_red25();
-    break;
-  }
-}  
+
+/* void dim() */
+/* { */
+/*   switch (dim_state) { */
+/*   case 0: //Dim intensity 50 */
+/*     toggle_red(); */
+/*     break; */
+/*   case 1: //Dim intensity 75 */
+/*     toggle_red75(); */
+/*     break; */
+/*   case 2: //Dim intensity 25 */
+/*     toggle_red25(); */
+/*     break; */
+/*   } */
+/* } */
+
+
 
 void turn_green_on() //Only green will be on
 {
