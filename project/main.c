@@ -27,9 +27,10 @@ void wdt_c_handler()
     drawZeldaScene();
     changeMade = 1;
   }    
-  else if (interrupt_count == 62 && button_state == 2) { //Advances siren state, switches leds
+  else if (interrupt_count == 250 && button_state == 2) { //Advances siren state, switches leds
     turn_red_off();
-    buzz_song_advance();
+    buzzer_set_period(0);
+    draw_diamonds();
     interrupt_count = 0;
     changeMade = 1;
   }

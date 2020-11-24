@@ -12,6 +12,24 @@ static char toggle_state = 0; //Determines current toggle state for dimming
 static char dim_state = 0; //Determines state of dim()
 static char repeated = 0; //Used to control how many times funcitons are called in dim
 
+void draw_diamonds()
+{
+  static char color_state = 0;
+  switch (color_state) {
+  case 0:
+    drawDiamond(60,COLOR_CYAN);
+    color_state++;
+    break;
+  case 1:
+    drawDiamond(60,COLOR_BLUE);
+    color_state++;
+    break;
+  case 2:
+    drawDiamond(60,COLOR_PURPLE);
+    color_state = 0;
+    break;
+  }   
+}  
 void turn_red_off() //Turns red off
 {
   red_on = 0;
@@ -166,22 +184,11 @@ void buzz_song_advance() //Plays Sonic song
   static char curr_note = 0;
   
   //Alternating Sonic sprites
-  if ((curr_note % 2) == 0) {
-    if (button_state == 0)
-      drawSonic(50,50,COLOR_WHITE, COLOR_BLUE);
-    if (button_state == 2)
-      drawSonic(50,50,COLOR_WHITE, COLOR_YELLOW);
-    if (button_state == 3)
-      drawSonic(50,50,COLOR_WHITE, COLOR_CYAN);
-  }  
-  else {
-    if (button_state == 0)
-      drawSonic2(50,50,COLOR_WHITE, COLOR_BLUE);
-    if (button_state == 2)
-      drawSonic2(50,50,COLOR_WHITE, COLOR_YELLOW);
-    if (button_state == 3)
-      drawSonic2(50,50,COLOR_WHITE, COLOR_CYAN);
-  }  
+  if ((curr_note % 2) == 0) 
+    drawSonic(50,50,COLOR_WHITE, COLOR_BLUE); 
+  else 
+    drawSonic2(50,50,COLOR_WHITE, COLOR_BLUE);
+     
   switch(curr_note) {
   case 0: //Plays note G
     buzzer_set_period(G);

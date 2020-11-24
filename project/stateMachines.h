@@ -1,6 +1,7 @@
 #ifndef stateMachine_included
 #define stateMachine_included
 
+void draw_diamonds();
 void buzzer_advance();
 void turn_red_off();
 void siren_state_advance();

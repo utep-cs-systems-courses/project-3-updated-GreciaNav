@@ -17,6 +17,22 @@ void drawPixel(u_char col, u_char row, u_int colorBGR)
   lcd_writeColor(colorBGR);
 }
 
+void drawDiamond(char center, u_int shapeColor)
+{
+  for(u_char r = 0; r < 11; r++) {
+    for(u_char c = 0; c <= r; c++) {
+      drawPixel(center+c, r, shapeColor);
+      drawPixel(center-c, r, shapeColor);
+    }
+  }
+
+  for(u_char c = 0; c < 11; c++) {
+    for(u_char r = 10; r <= 20-c; r++) {
+      drawPixel(center+c, r, shapeColor);
+      drawPixel(center-c, r, shapeColor);
+    }
+  }
+}  
 void drawLink(u_char offc, u_char offr, u_int bgColorBGR)
 {
   u_char col = 0;
