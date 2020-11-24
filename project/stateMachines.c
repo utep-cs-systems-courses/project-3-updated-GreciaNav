@@ -9,6 +9,8 @@
 
 static char sb = 1; //Determines if we are on up or down state
 static char toggle_state = 0; //Determines current toggle state for dimming
+static char dim_state = 0; //Determines state of dim()
+static char repeated = 0; //Used to control how many times funcitons are called in dim
 
 void turn_red_off() //Turns red off
 {
@@ -18,77 +20,87 @@ void turn_red_off() //Turns red off
 
 void toggle_red() //Red at 50% intensity		
 {
-  switch (toggle_state) {
-  case 0: //Red on
-    red_on = 1;
-    toggle_state = 1;
-    break;
-  case 1: //Red off
-    red_on = 0;
-    toggle_state = 0;
-    break;
+  if (repeated < 2) {
+    repeated++;
+    switch (toggle_state) {
+    case 0: //Red on
+      red_on = 1;
+      toggle_state = 1;
+      break;
+    case 1: //Red off
+      red_on = 0;
+      toggle_state = 0;
+      break;
+    }
+    led_update();
   }
-  led_update();
+  else {
+    repeated = 0;
+    dim_state = 1;
+  }   
 }
 
 void toggle_red75() //Red at 75% intensity
 {
-  switch (toggle_state) {
-  case 0: //Red on
-    red_on = 1;
-    toggle_state = 1;
-    break;
-  case 1: //Red on 
-    red_on = 1;
-    toggle_state = 2;
-    break;
-  case 2: //Red off
-    red_on = 0;
-    toggle_state = 0;
-    break;
+  if (repeated < 3) {
+    switch (toggle_state) {
+    case 0: //Red on
+      red_on = 1;
+      toggle_state = 1;
+      break;
+    case 1: //Red on 
+      red_on = 1;
+      toggle_state = 2;
+      break;
+    case 2: //Red off
+      red_on = 0;
+      toggle_state = 0;
+      break;
+    }
+    led_update();
   }
-  led_update();
+  else {
+    repeated = 0;
+    dim_state = 2;
+  }   
 }  
 
 void toggle_red25() //Red at 25% intensity
 {
-  switch (toggle_state) {
-  case 0: //Red off
-    red_on = 0;
-    toggle_state = 1;
-    break;
-  case 1: //Red off
-    red_on = 0;
-    toggle_state = 2;
-    break;
-  case 2: //Red on
-    red_on = 1;
-    toggle_state = 0;
-    break;
+  if (repeated < 3) {
+    switch (toggle_state) {
+    case 0: //Red off
+      red_on = 0;
+      toggle_state = 1;
+      break;
+    case 1: //Red off
+      red_on = 0;
+      toggle_state = 2;
+      break;
+    case 2: //Red on
+      red_on = 1;
+      toggle_state = 0;
+      break;
+    }
+    led_update();
   }
-  led_update();
+  else {
+    repeated = 0;
+    dim_state = 0;
+  }  
 }
   
 void dim()
 {
-  static char dim_state = 0;
   switch (dim_state) {
   case 0: //Dim intensity 50
     toggle_red();
-    toggle_red();
-    dim_state = 1;
     break;
   case 1: //Dim intensity 75
     toggle_red75();
-    toggle_red75();
-    toggle_red75();
-    dim_state = 2;
     break;
   case 2: //Dim intensity 25
     toggle_red25();
-    toggle_red25();
-    toggle_red25();
-    dim_state = 0;
     break;
   }
 }  
