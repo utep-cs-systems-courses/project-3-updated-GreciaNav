@@ -39,17 +39,8 @@ void turn_red_off() //Turns red off
 void toggle_red() //Red at 50% intensity		
 {
   if (repeated < 2) {
-    repeated++;
-    switch (toggle_state) {
-    case 0: //Red on
-      red_on = 1;
-      toggle_state = 1;
-      break;
-    case 1: //Red off
-      red_on = 0;
-      toggle_state = 0;
-      break;
-    }
+    repeated++;  
+    toggle_state = toggle_red_state_machine(toggle_state);
     led_update();
   }
   else {
@@ -109,23 +100,6 @@ void toggle_red25() //Red at 25% intensity
     dim_state = 0;
   }  
 }
-
-/* void dim() */
-/* { */
-/*   switch (dim_state) { */
-/*   case 0: //Dim intensity 50 */
-/*     toggle_red(); */
-/*     break; */
-/*   case 1: //Dim intensity 75 */
-/*     toggle_red75(); */
-/*     break; */
-/*   case 2: //Dim intensity 25 */
-/*     toggle_red25(); */
-/*     break; */
-/*   } */
-/* } */
-
-
 
 void turn_green_on() //Only green will be on
 {
