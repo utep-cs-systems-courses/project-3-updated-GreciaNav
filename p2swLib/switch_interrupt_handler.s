@@ -13,7 +13,7 @@ switch_interrupt_handler:
 	mov.b r12, 0(r1)	;p2val = switch_update_interrupt_sense
 
 if:
-	mov.b #0x0001, r13	;SW1, BIT0
+	mov.b #1, r13	;SW1, BIT0
 	and.b 0(r1), r13
 	cmp.b #0, r13		;if ((pv2al & SW1) == 0)
 	jnz elseif		;(pv2al & SW1) != 0
@@ -24,7 +24,7 @@ if:
 	jmp end
 
 elseif:
-	mov.b #0x0010, r13	;SW2, BIT1
+	mov.b #2, r13	;SW2, BIT1
 	and.b 0(r1), r13
 	cmp.b #0, r13		;if ((pv2al & SW2) == 0)
 	jnz elseif2		;(pv2al & SW2) != 0
@@ -33,7 +33,7 @@ elseif:
 	jmp end
 
 elseif2:
-	mov.b #0x0100, r13 	;SW3, BIT2
+	mov.b #4, r13 	;SW3, BIT2
 	and.b 0(r1), r13
 	cmp.b #0, r13		;if ((pv2al & SW3) == 0)
 	jnz elseif3		;(pv2al & SW3) != 0
@@ -44,7 +44,7 @@ elseif2:
 	jmp end
 
 elseif3:
-	mov.b #0x1000, r13	;SW4, BIT3
+	mov.b #8, r13	;SW4, BIT3
 	and.b 0(r1), r13
 	cmp.b #0, r13		;if ((pv2al & SW4) == 0)
 	jnz end		        ;(pv2al & SW4) != 0

@@ -8,7 +8,7 @@ static unsigned char switches_last_reported;
 static unsigned char switches_current;
 char button_state = 0;
 
-static char
+char
 switch_update_interrupt_sense()
 {
   char p2val = P2IN;
@@ -49,25 +49,4 @@ __interrupt_vec(PORT2_VECTOR) Port_2(){
     P2IFG &= ~switch_mask;	/* clear pending sw interrupts */
     switch_interrupt_handler();
   }
-}
-
-void
-switch_interrupt_handler()
-{
-  char p2val = switch_update_interrupt_sense();
- 
-  if ((p2val & SW1) == 0) { //Button 1 was pressed
-    clearScreen(COLOR_WHITE);
-    button_state = 0;
-  }  
-  else if ((p2val & SW2) == 0) //Button 2 was pressed 
-    button_state = 1;   
-  else if ((p2val & SW3) == 0) { //Button 3 was pressed
-    clearScreen(COLOR_WHITE);
-    button_state = 2;
-  }
-  else if ((p2val & SW4) == 0) {//Button 4 was pressed
-    clearScreen(COLOR_WHITE);
-    button_state = 3;
-  }  
 }

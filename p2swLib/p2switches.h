@@ -11,6 +11,7 @@
 #define SWITCHES (SW1 | SW2 | SW3 | SW4) //4 switches on the board
 
 unsigned int p2sw_read();
+char switch_update_interrupt_sense();
 void p2sw_init(unsigned char mask);
 void switch_interrupt_handler();
 

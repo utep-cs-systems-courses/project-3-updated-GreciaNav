@@ -9,7 +9,7 @@ CC              = msp430-elf-gcc
 AS              = msp430-elf-as
 AR              = msp430-elf-ar
 
-OBJECTS         = p2switches.o
+OBJECTS         = p2switches.o switch_interrupt_handler.o
 
 libp2sw.a: $(OBJECTS)
 	$(AR) crs $@ $^
@@ -24,7 +24,7 @@ install: libp2sw.a
 clean:
 	rm -f *.a *.o *.elf
 
-switchdemo.elf: switchdemo.o libp2sw.a 
+switchdemo.elf: switchdemo.o libp2sw.a
 	$(CC) $(CFLAGS) ${LDFLAGS} -o $@ $^ -lTimer
 
 load: switchdemo.elf
