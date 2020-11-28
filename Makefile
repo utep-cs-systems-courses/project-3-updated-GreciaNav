@@ -5,7 +5,6 @@ all:
 	(cd circleLib; make install)
 	(cd p2swLib; make install)
 	(cd p2sw-demo; make)
-	(cd shape-motion-demo; make)
 
 doc:
 	rm -rf doxygen_docs
