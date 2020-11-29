@@ -12,7 +12,7 @@ jt:
 	
 toggle_red_state_machine:
 	mov.b #0, r13		;placeholder to compare 0
-	cmp.b r12, r13	        ;unsigned comp
+	cmp.b r12, r13	        
 	jl case1		;if N!=V
 
 	mov.b r12, r13

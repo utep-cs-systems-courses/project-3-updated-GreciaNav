@@ -8,33 +8,32 @@
 #include "buzzer.h"
 
 short changeMade = 1;
-u_int fontFgColor = COLOR_BLACK;
 
 void wdt_c_handler()
 {
   static char interrupt_count = 0;
   
-  if (++interrupt_count == 62 && button_state == 0) { //Called per 1/4th of a sec, plays song
+  if (++interrupt_count == 62 && button_state == 0) { //Called per 1/4th of a sec, dancing sonic
     turn_red_off();
     buzz_song_advance();
     interrupt_count = 0;
     changeMade = 1;
   }
-  else if (interrupt_count == 250 && button_state == 1) { //Siren buzz
+  else if (interrupt_count == 250 && button_state == 1) { //Displays Zelda scene
     turn_red_off();
     buzzer_set_period(0);
     clearScreen(COLOR_BLACK);
     drawZeldaScene();
     changeMade = 1;
   }    
-  else if (interrupt_count == 250 && button_state == 2) { //Advances siren state, switches leds
+  else if (interrupt_count == 250 && button_state == 2) { //Draws rhombus, changes color per sec
     turn_red_off();
     buzzer_set_period(0);
     draw_diamonds();
     interrupt_count = 0;
     changeMade = 1;
   }
-  else if ((interrupt_count == 3) && button_state == 3) { //Different red intensities, buzzer off
+  else if ((interrupt_count == 3) && button_state == 3) { //Different red intensities
     buzzer_set_period(0);
     dim();
     interrupt_count = 0;
@@ -58,7 +57,6 @@ void main()
   
   clearScreen(COLOR_WHITE);
   while (1) {			/* forever */
-    static char color = 0;
     if (changeMade) 
       changeMade = 0;
     P1OUT &= ~LED_GREEN;	/* green off */
@@ -66,9 +64,3 @@ void main()
     P1OUT |= LED_GREEN;		/* green on */
   }
 }
-
-    
-    
-
-
-

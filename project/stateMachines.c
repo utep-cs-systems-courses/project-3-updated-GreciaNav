@@ -7,12 +7,11 @@
 #include "lcddraw.h"
 #include "p2switches.h"
 
-char sb = 1; //Determines if we are on up or down state
 char toggle_state = 0; //Determines current toggle state for dimming
 char dim_state = 0; //Determines state of dim()
 char repeated = 0; //Used to control how many times funcitons are called in dim
 
-void draw_diamonds()
+void draw_diamonds() //Draws diamond that alternates colors
 {
   static char color_state = 0;
   switch (color_state) {
@@ -115,46 +114,6 @@ void turn_red_on() //Only red will be on
   led_update();
 }
 
-void up_state(){ //Up state in main_state_advance
-  sb = 1;
-  turn_green_on();
-}
-
-void down_state(){ //Down state in main_state_advance 
-  sb = 0;
-  turn_red_on();
-}
-
-void siren_state_advance(){ //Controls siren 
-  static char state = 0;
-  switch(state) {
-  case 0:
-  case 1: //Tone goes up in first 2 cases
-    up_state();
-    state++;
-    break;
-  case 2: //Tone goes down in last case
-    down_state();
-    state = 0;
-  default:
-    break;
-  }
-}
-
-void buzzer_advance() //Plays siren
-{
-  static int x = 500;
-  if (sb) { //Goes up if we are on up state
-    x += 225;
-  }
-  else{ //Goes down if we are on down state
-    x -= 450;
-  }
-
-  short cycles = 2000000 / x;
-  buzzer_set_period(cycles);
-}
-
 void buzz_song_advance() //Plays Sonic song
 {
   static char curr_note = 0;
@@ -248,5 +207,4 @@ void buzz_song_advance() //Plays Sonic song
   default:
     curr_note++;
   }   
-}  
-    
+}
