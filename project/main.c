@@ -24,9 +24,10 @@ void wdt_c_handler()
     buzzer_set_period(0);
     clearScreen(COLOR_BLACK);
     drawZeldaScene();
+    interrupt_count = 0; 
     changeMade = 1;
   }    
-  else if (interrupt_count == 250 && button_state == 2) { //Draws rhombus, changes color per sec
+  else if (interrupt_count == 250 && button_state == 2) { //Draws diamond, changes color per sec
     turn_red_off();
     buzzer_set_period(0);
     draw_diamonds();
