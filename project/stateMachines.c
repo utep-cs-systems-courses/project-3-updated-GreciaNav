@@ -14,26 +14,18 @@ char diamond_color_state = 0; //Determines color of diamond to be drawn
 
 void draw_zelda_scene() //draws zelda scene
 {
-  static char colorState = 0;
-  u_int textColor; 
-  switch (colorState) {
+  static char zeldaState = 0; 
+  switch (zeldaState) {
   case 0:
-    textColor = COLOR_WHITE;
-    colorState++;
+    clearScreen(COLOR_BLACK);
+    zeldaState++;
     break;
   case 1:
-    textColor = COLOR_RED;
-    colorState = 0;
+    drawString11x16(0,5,"LINK", COLOR_ORANGE, COLOR_BLACK);
+    drawLink(55,5, COLOR_BLACK);
+    zeldaState = 0;
     break;
   }   
-  
-  drawString11x16(0,5,"It's 2020.", textColor, COLOR_BLACK);
-  drawString11x16(0,22,"You've met", textColor, COLOR_BLACK);
-  drawString11x16(0,39,"a terrible", textColor, COLOR_BLACK);
-  drawString11x16(0,56,"fate...", textColor, COLOR_BLACK);
-  drawString11x16(0,73,"Haven't", textColor, COLOR_BLACK);
-  drawString11x16(0,90,"you?", textColor, COLOR_BLACK);
-  drawLink(50,107, COLOR_BLACK);
 }
   
 void turn_red_off() //Turns red off

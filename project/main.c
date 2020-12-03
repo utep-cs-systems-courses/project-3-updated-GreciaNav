@@ -48,7 +48,6 @@ void main()
   clearScreen(COLOR_BLACK);
   while (1) {			/* forever */
     if (changeMade) { 
-      changeMade = 0;
       switch (button_state) {
       case 0: //Dancing Sonic
 	turn_red_off();
@@ -68,7 +67,8 @@ void main()
       case 3: //Dim light
 	buzzer_set_period(0);
 	dim();
-      }	
+      }
+      changeMade = 0;
     }  
     P1OUT &= ~LED_GREEN;	/* green off */
     or_sr(0x10);		/**< CPU OFF */
