@@ -19,11 +19,10 @@ void draw_zelda_scene() //draws zelda scene
   switch (colorState) {
   case 0:
     clearScreen(COLOR_BLACK);
-  case 1:
     textColor = COLOR_WHITE;
     colorState++;
     break;
-  case 2:
+  case 1:
     textColor = COLOR_RED;
     colorState = 0;
     break;
@@ -134,84 +133,83 @@ void buzz_song_advance() //Plays Sonic song
     drawSonic2(50,50,COLOR_BLACK, COLOR_BLUE);
      
   switch(curr_note) {
-  case 0:
+  case 0: //Plays note G
     clearScreen(COLOR_BLACK);
-  case 1: //Plays note G
     buzzer_set_period(G);
     curr_note++;
     break;
-  case 2: //Plays note E, hold 2 beats
+  case 1: //Plays note E, hold 2 beats
     buzzer_set_period(E);
     curr_note++;
     break;
-  case 4: //Break in notes
+  case 3: //Break in notes
     buzzer_set_period(0);
     curr_note++;
     break;
-  case 5: //Plays note E
+  case 4: //Plays note E
     buzzer_set_period(E);
     curr_note++;
     break;
-  case 6: //Break in notes
+  case 5: //Break in notes
     buzzer_set_period(0);
     curr_note++;
     break;
-  case 7: //Plays note F, hold 2 beats
+  case 6: //Plays note F, hold 2 beats
     buzzer_set_period(F);
     curr_note++;
     break;
-  case 9: //Break in notes
+  case 8: //Break in notes
     buzzer_set_period(0);
     curr_note++;
     break;
-  case 10: //Plays note D, hold 2 beats
+  case 9: //Plays note D, hold 2 beats
     buzzer_set_period(D);
     curr_note++;
     break;
-  case 12: //Break in notes
+  case 11: //Break in notes
     buzzer_set_period(0);
     curr_note++;
     break;
-  case 13: //Plays note E
+  case 12: //Plays note E
     buzzer_set_period(E);
     curr_note++;
     break;
-  case 14: //Break in notes
+  case 13: //Break in notes
     buzzer_set_period(0);
     curr_note++;
     break;
-  case 15: //Plays note E
+  case 14: //Plays note E
     buzzer_set_period(E);
     curr_note++;
     break;
-  case 16: //Break in notes
+  case 15: //Break in notes
     buzzer_set_period(0);
     curr_note++;
     break;
-  case 17: //Plays note E
+  case 16: //Plays note E
     buzzer_set_period(E);
     curr_note++;
     break;
-  case 18: //Break in notes
+  case 17: //Break in notes
     buzzer_set_period(0);
     curr_note++;
-  case 19: //Plays note C, hold 2 beats
+  case 18: //Plays note C, hold 2 beats
     buzzer_set_period(Cn);
     curr_note++;
     break;
-  case 21: //Break in notes
+  case 20: //Break in notes
     buzzer_set_period(0);
     curr_note++;
     break;
-  case 22: //Plays note A#, hold 2 beats
+  case 21: //Plays note A#, hold 2 beats
     buzzer_set_period(ASH);
     curr_note++;
     break;
-  case 24: //Plays note D, hold 2 beats
+  case 23: //Plays note D, hold 2 beats
     buzzer_set_period(D);
     curr_note++;
     break;
-  case 26: //Song end, back to beggining
+  case 25: //Song end, back to beggining
     buzzer_set_period(0);
     curr_note = 0;
     break;

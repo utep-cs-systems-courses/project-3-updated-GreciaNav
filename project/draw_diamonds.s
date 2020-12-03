@@ -9,14 +9,13 @@ jt:
 	.word case0		;jt[0]
 	.word case1		;jt[1]
 	.word case2		;jt[2]
-	.word case3		;jt[3]
 
 	.global draw_diamonds
 draw_diamonds:
 	;; range check on selector (diamond_color_state)
-	mov.b #2, r13		;placeholder to compare 2
+	mov.b #1, r13		;placeholder to compare 1
 	cmp.b &diamond_color_state, r13
-	jl case3		;if N!=V, draw_diamonds > 2
+	jl case2		;if N!=V, draw_diamonds > 1
 
 	mov.b &diamond_color_state, r13
 	add.b r13, r13
@@ -25,20 +24,18 @@ draw_diamonds:
 case0:
 	mov.b #0x0000, r12 	;COLOR_BLACK
 	call #clearScreen	;clearScreen(COLOR_BLACK)
-
-case1:
 	mov.b #60, r12
 	mov #0xffe0, r13	;COLOR_CYAN
 	call #drawDiamond	;drawDiamond(60,COLOR_CYAN)
 	add.b #1, &diamond_color_state ;diamond_color_state++
 	jmp end
-case2:
+case1:
 	mov.b #60, r12
 	mov #0xf800, r13	;COLOR_BLUE
 	call #drawDiamond	;drawDiamond(60,COLOR_BLUE)
 	add.b #1, &diamond_color_state ;diamond_color_state++
 	jmp end
-case3:
+case2:
 	mov.b #60, r12
 	mov #0xf114, r13	;COLOR_PURPLE
 	call #drawDiamond	;drawDiamond(60,COLOR_CYAN)
