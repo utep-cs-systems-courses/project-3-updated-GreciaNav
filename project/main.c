@@ -56,7 +56,6 @@ void main()
       case 1: //Displays Zelda scene
 	turn_red_off();
 	buzzer_set_period(0);
-	clearScreen(COLOR_BLACK);
 	draw_zelda_scene();
 	break;
       case 2: //Color changing diamond
