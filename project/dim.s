@@ -14,8 +14,8 @@ jt:
 	.global dim
 dim:
 	;;  range check on selector (dim_state)
-	cmp.b #3, &dim_state
-	jhs end			
+	cmp.b #2, &dim_state
+	jhs option2		;dim_state >= 2
 
 	;; index into jt  
 	mov.b &dim_state, r13

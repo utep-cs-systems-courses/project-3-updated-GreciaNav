@@ -10,29 +10,9 @@
 char toggle_state = 0; //Determines current toggle state for dimming
 char dim_state = 0; //Determines state of dim()
 char repeated = 0; //Used to control how many times funcitons are called in dim
-char diamond_color_state = 0;
+char diamond_color_state = 0; //Determines color of diamond to be drawn
 
-void draw_diamonds() //Draws diamond that alternates colors
-{
-  switch (diamond_color_state) {
-  case 0:
-    clearScreen(COLOR_BLACK);
-  case 1:
-    drawDiamond(60,COLOR_CYAN);
-    diamond_color_state++;
-    break;
-  case 2:
-    drawDiamond(60,COLOR_BLUE);
-    diamond_color_state++;
-    break;
-  case 3:
-    drawDiamond(60,COLOR_PURPLE);
-    diamond_color_state = 0;
-    break;
-  }   
-}
-
-void draw_zelda_scene()
+void draw_zelda_scene() //draws zelda scene
 {
   static char colorState = 0;
   u_int textColor; 

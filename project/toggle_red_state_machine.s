@@ -13,7 +13,7 @@ jt:
 toggle_red_state_machine:
 	mov.b #0, r13		;placeholder to compare 0
 	cmp.b r12, r13	        
-	jl case1		;if N!=V
+	jl case1		;if N!=V, toggle_state > 0
 
 	mov.b r12, r13
 	add.b r13, r13
