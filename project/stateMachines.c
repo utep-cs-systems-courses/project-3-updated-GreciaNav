@@ -18,7 +18,6 @@ void draw_zelda_scene() //draws zelda scene
   u_int textColor; 
   switch (colorState) {
   case 0:
-    clearScreen(COLOR_BLACK);
     textColor = COLOR_WHITE;
     colorState++;
     break;

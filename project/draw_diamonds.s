@@ -38,7 +38,7 @@ case1:
 case2:
 	mov.b #60, r12
 	mov #0xf114, r13	;COLOR_PURPLE
-	call #drawDiamond	;drawDiamond(60,COLOR_CYAN)
+	call #drawDiamond	;drawDiamond(60,COLOR_PURPLE)
 	mov.b #0, &diamond_color_state ;diamond_color_state = 0
 	jmp end
 end:
