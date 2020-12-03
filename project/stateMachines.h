@@ -2,6 +2,7 @@
 #define stateMachine_included
 
 void draw_diamonds();
+void draw_zelda_scene();
 void buzzer_advance();
 void turn_red_off();
 void siren_state_advance();

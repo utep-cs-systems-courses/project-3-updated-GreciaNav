@@ -18,8 +18,6 @@ if:
 	cmp.b #0, r13		;if ((pv2al & SW1) == 0)
 	jnz elseif		;(pv2al & SW1) != 0
 
-	mov #0xffff, r12	;COLOR_WHITE
-	call #clearScreen	;clearScreen(COLOR_WHITE)
 	mov.b #0, &button_state	;button_state = 0
 	jmp end
 
@@ -38,8 +36,6 @@ elseif2:
 	cmp.b #0, r13		;if ((pv2al & SW3) == 0)
 	jnz elseif3		;(pv2al & SW3) != 0
 
-	mov #0xffff, r12	;COLOR_WHITE
-	call #clearScreen	;clearScreen(COLOR_WHITE)
 	mov.b #2, &button_state	;button_state = 2
 	jmp end
 
@@ -49,8 +45,6 @@ elseif3:
 	cmp.b #0, r13		;if ((pv2al & SW4) == 0)
 	jnz end		        ;(pv2al & SW4) != 0
 
-	mov #0xffff, r12	;COLOR_WHITE
-	call #clearScreen	;clearScreen(COLOR_WHITE)
 	mov.b #3, &button_state	;button_state = 3
 	jmp end
 

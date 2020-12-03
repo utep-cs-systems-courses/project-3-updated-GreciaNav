@@ -54,30 +54,6 @@ void drawLink(u_char offc, u_char offr, u_int bgColorBGR)
   }   
 }
 
-void drawZeldaScene()
-{
-  static char colorState = 0;
-  u_int textColor; 
-  switch (colorState) {
-  case 0:
-    textColor = COLOR_WHITE;
-    colorState++;
-    break;
-  case 1:
-    textColor = COLOR_RED;
-    colorState = 0;
-    break;
-  }   
-  
-  drawString11x16(0,5,"It's 2020.", textColor, COLOR_BLACK);
-  drawString11x16(0,22,"You've met", textColor, COLOR_BLACK);
-  drawString11x16(0,39,"a terrible", textColor, COLOR_BLACK);
-  drawString11x16(0,56,"fate...", textColor, COLOR_BLACK);
-  drawString11x16(0,73,"Haven't", textColor, COLOR_BLACK);
-  drawString11x16(0,90,"you?", textColor, COLOR_BLACK);
-  drawLink(50,107, COLOR_BLACK);
-}
-
 void drawSonic(u_char offc, u_char offr, u_int bgColorBGR, u_int sonicColor) {
   u_char col = 0;
   u_char row = 0;

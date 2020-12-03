@@ -45,7 +45,7 @@ void main()
   enableWDTInterrupts();      /**< enable periodic interrupt */
   or_sr(0x8);	              /**< GIE (enable interrupts) */
   
-  clearScreen(COLOR_WHITE);
+  clearScreen(COLOR_BLACK);
   while (1) {			/* forever */
     if (changeMade) { 
       changeMade = 0;
@@ -57,8 +57,8 @@ void main()
       case 1: //Displays Zelda scene
 	turn_red_off();
 	buzzer_set_period(0);
-	clearScreen(COLOR_BLACK);
-	drawZeldaScene();
+	//clearScreen(COLOR_BLACK);
+	draw_zelda_scene();
 	break;
       case 2: //Color changing diamond
 	turn_red_off();
