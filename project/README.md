@@ -28,7 +28,7 @@ this naming convention for the buttons.
 - Pressing **S1**: This button will display a dancing Sonic the Hedgehog! This
   cute little Sonic will be dancing to the tune of his own theme song.
 
-- Pressing **S2**: This button turns off the buzzer and will show link from the Legend of Zelda with a spooky message.
+- Pressing **S2**: This button turns off the buzzer and will show link from the Legend of Zelda.
 
 - Pressing **S3**: This button turns off the buzzer and displays a diamond that changes color every second.
 
